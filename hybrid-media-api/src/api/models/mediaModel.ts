@@ -50,7 +50,7 @@ const fetchAllMedia = async (
   limit: number | undefined = undefined,
 ): Promise<MediaItem[]> => {
   const offset = ((page || 1) - 1) * (limit || 10);
-  const sql = `${BASE_MEDIA_QUERY}
+  const sql = `${BASE_MEDIA_QUERY} ORDER BY media_id DESC
     ${limit ? 'LIMIT ? OFFSET ?' : ''}`;
   const params = limit ? [uploadPath, limit, offset] : [uploadPath];
   const stmt = promisePool.format(sql, params);
