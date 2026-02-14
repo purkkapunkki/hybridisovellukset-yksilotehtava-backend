@@ -1,7 +1,7 @@
 -- Drop the database if it exists and then create it
-DROP DATABASE IF EXISTS MediaSharingApp;
-CREATE DATABASE MediaSharingApp;
-USE MediaSharingApp;
+DROP DATABASE IF EXISTS retrofit_site;
+CREATE DATABASE retrofit_site;
+USE retrofit_site;
 
 -- Create the tables
 
