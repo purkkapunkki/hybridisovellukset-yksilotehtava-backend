@@ -109,8 +109,8 @@ const modifyUser = async (
       throw new CustomError('User not found', 404);
     }
 
-    const updatedUser = await getUserById(id);
     await connection.commit();
+    const updatedUser = await getUserById(id);
     return updatedUser;
   } finally {
     connection.release();
