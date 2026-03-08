@@ -6,8 +6,10 @@ import CustomError from '../../classes/CustomError';
 import {TokenContent} from 'hybrid-types/DBTypes';
 import randomstring from 'randomstring';
 
+const uploadDir = process.env.UPLOAD_DIR || './uploads/';
+
 const storage = multer.diskStorage({
-  destination: './uploads/',
+  destination: uploadDir,
   filename: (req, file, cb) => {
     const userId = (req as Request).res?.locals.user.user_id;
     const extension = file.originalname.split('.').pop();
