@@ -16,22 +16,20 @@ const BASE_MEDIA_QUERY = `
     title,
     description,
     created_at,
-    CONCAT(base_url, filename) AS filename,
+    CONCAT(vars.base_url, filename) AS filename,
     CASE
       WHEN media_type LIKE '%image%'
-      THEN CONCAT(base_url, filename, '-thumb.png')
-      ELSE CONCAT(base_url, filename, '-animation.gif')
+      THEN CONCAT(vars.base_url, filename, '-thumb.png')
+      ELSE CONCAT(vars.base_url, filename, '-animation.gif')
     END AS thumbnail,
     CASE
       WHEN media_type NOT LIKE '%image%'
-      THEN (
-        SELECT JSON_ARRAY(
-          CONCAT(base_url, filename, '-thumb-1.png'),
-          CONCAT(base_url, filename, '-thumb-2.png'),
-          CONCAT(base_url, filename, '-thumb-3.png'),
-          CONCAT(base_url, filename, '-thumb-4.png'),
-          CONCAT(base_url, filename, '-thumb-5.png')
-        )
+      THEN JSON_ARRAY(
+        CONCAT(vars.base_url, filename, '-thumb-1.png'),
+        CONCAT(vars.base_url, filename, '-thumb-2.png'),
+        CONCAT(vars.base_url, filename, '-thumb-3.png'),
+        CONCAT(vars.base_url, filename, '-thumb-4.png'),
+        CONCAT(vars.base_url, filename, '-thumb-5.png')
       )
       ELSE NULL
     END AS screenshots
